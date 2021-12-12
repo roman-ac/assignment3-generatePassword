@@ -27,6 +27,13 @@ var askNumbers = window.confirm ("include numbers?");
 var askCharacters = window.confirm ("include special characters?")
 
 
+// verifying at least one character type is selected
+if (!askUppercase && !askLowercase && !askNumbers && !askCharacters) {
+  window.alert ("Please select at least one special character type!");
+  return (generatePassword);
+}
+
+
 }
 
 
