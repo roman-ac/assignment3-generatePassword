@@ -20,6 +20,12 @@ if (passwordLength < 8 || passwordLength > 128) {
   return generatePassword();
 }
 
+// creating variable for character type to include in password
+var askUppercase = window.confirm ("include upper case letters?");
+var askLowercase = window.confirm ("include lower case letters?");
+var askNumbers = window.confirm ("include numbers?");
+var askCharacters = window.confirm ("include special characters?")
+
 
 }
 
