@@ -14,6 +14,13 @@ if (isNaN(passwordLength)) {
   return generatePassword();
 }
 
+// verifying the the number is within the given paremeters
+if (passwordLength < 8 || passwordLength > 128) {
+  window.alert ("Value must be between 8 - 128 !");
+  return generatePassword();
+}
+
+
 }
 
 
