@@ -7,18 +7,18 @@ var uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"
 var lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var numbers = ["0","1","2","3","4","5","6","7","8","9"];
 var characters = ["!","@","#","$","%","&","?","+","~"];
-var chosenCharacters = [""]; // empty string
+var chosenCharacters = []; // empty array
 
 // we are going to start with creating the missing generatePassword function
 
 function generatePassword () {
 
-  var result ="";
+  
 
-//  ask for password length 
+//  ask or password length 
 var passwordLength = window.prompt ("Please choose a password length of between 8 - 128.");
 
-// verify the input is correct 
+// verify the input is correct, if not return function
 if (isNaN(passwordLength)) {
   window.alert ("Must be a numeric value!");
   return generatePassword();
@@ -38,34 +38,39 @@ var askCharacters = window.confirm ("include special characters?")
 
 
 // verifying at least one character type is selected
-if (!askUppercase && !askLowercase && !askNumbers && !askCharacters) {
+if (askUppercase === false && askLowercase === false 
+   && askNumbers === false && askCharacters === false) {
   window.alert ("Please select at least one special character type!");
   return generatePassword();
 }
+// asking if uppercase character to be included
 
-if (askUppercase = true) {
-  chosenCharacters += uppercase; // googled the value of +=
+if (askUppercase === true) {
+  chosenCharacters.push(...uppercase);  // got help from tutor w/ push function
 }
-
-if (askLowercase = true) {
-  chosenCharacters += lowercase;
+// asking if lowercase character to be included
+if (askLowercase === true) {
+  chosenCharacters.push(...lowercase);
 }
-
-if (askNumbers = true) {
-  chosenCharacters += numbers;
+// asking if numbers to be included
+if (askNumbers === true) {
+  chosenCharacters.push(...numbers);
 }
-
-if (askCharacters = true) {
-  chosenCharacters += characters;
+// asking if special characters to be included
+if (askCharacters === true) {
+  chosenCharacters.push(...characters);
 }
+var result = ""; // creating empty var result (got help here)
 
-var result = Math.floor(Math.random() * chosenCharacters.passwordLength);
+// for loop to calclate the password with user input parameters
+for (i=0; i<passwordLength; i++) {
+  var index = Math.floor(Math.random() * chosenCharacters.length);
+  result += chosenCharacters[index];
 
-//var result = chosenCharacters[index];
+// got help from tutor with for loop
+}
 
 return result;
-
-
 
 
 }
@@ -82,3 +87,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
